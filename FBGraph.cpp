@@ -63,13 +63,13 @@ bool FBGraph::loadFromFile(const char* in_filename) {
 }
 
 void FBGraph::insertGraph(string id1, string id2) {
-  if (users.find(id) == users.end()) {
+  if (users.find(id1) == users.end()) {
     UserNode* newUser = new UserNode(id1);
     users[id1] = newUser; 
   }
 
   UserNode* firstUser = users[id1];
-  UserNode* secondUser = users[id2]
+  UserNode* secondUser = users[id2];
   addEdge(firstUser,secondUser);
 }
 
@@ -79,14 +79,14 @@ void FBGraph::addEdge(UserNode* start, UserNode* end) {
     start->friendships[start->id + end->id] = newFriends;
   }
 
-  if (start->friends.find(id2) == start->friends.find(id2) {
-    UserNode* newFriend = new UserNode(id2);
-    start->friends[id2] = newFriend;
+  if (start->friends.find(end->id) == start->friends.find(end->id)) {
+    UserNode* newFriend = new UserNode(end->id);
+    start->friends[end->id] = newFriend;
   }
 } 
     
 void FBGraph::printMutualFriends(string start, string end, ofstream& out) {
-  unordered_map<string, UserNode*>  mutual_friends;
+  unordered_map<string>  mutual_friends;
   UserNode* first = users[start]; // grab first user
   UserNode* second = users[end];  // grab second user
 
@@ -99,4 +99,6 @@ void FBGraph::printMutualFriends(string start, string end, ofstream& out) {
   out << "Mutual friends between " << start << "and " << end << "are.." << endl;
   for (auto iter = mutual_friends.begin(); iter != mutual_friends.end(); iter++) {
     out << iter->first << ", ";
+  }
 }
+

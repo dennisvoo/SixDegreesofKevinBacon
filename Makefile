@@ -14,7 +14,7 @@ else
     LDFLAGS += -g
 endif
 
-all: pathfinder
+all: pathfinder actorconnections
 
 
 
@@ -22,7 +22,9 @@ all: pathfinder
 
 pathfinder: pathfinder.cpp ActorGraph.cpp ActorNode.cpp ActorEdge.cpp Movie.cpp UnionFind.cpp
 
+actorconnections: actorconnections.cpp ActorGraph.cpp ActorNode.cpp ActorEdge.cpp Movie.cpp UnionFind.cpp
 
+extension: extension.cpp FBGraph.cpp UserNode.cpp Friendship.cpp
 
 # include what ever source code *.h files ActorGraph relies on (these are merely the ones that were used in the solution)
 
@@ -30,6 +32,14 @@ pathfinder: pathfinder.cpp ActorGraph.cpp ActorNode.cpp ActorEdge.cpp Movie.cpp 
 
 ActorGraph.o: UnionFind.hpp Movie.h ActorNode.h ActorEdge.h ActorGraph.h
 
+UnionFind.o: UnionFind.h ActorGraph.h
+
+Movie.o: Movie.h ActorEdge.h
+
+ActorNode.o: ActorNode.h Movie.h
+
+ActorEdge.o: ActorEdge.h 
+
 clean:
-	rm -f pathfinder *.o core*
+	rm -f pathfinder actorconnections *.o core*
 

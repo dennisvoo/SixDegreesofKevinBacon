@@ -53,7 +53,7 @@ public:
     * end - second user
     * out - output stream we're printing to
     */
-  void printMutualFriends(string start, string end, ofstream out);
+  void printMutualFriends(string start, string end, ofstream& out);
 };
 
 #endif

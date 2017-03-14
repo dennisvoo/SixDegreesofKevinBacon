@@ -45,7 +45,7 @@ int main ( int argc, char** argv) {
     getline(ss, start, '\t');
     getline(ss, end, '\t');
 
-    ag.printMutualFriends(start, end);
+    fb.printMutualFriends(start, end, out);
 
   }
 
